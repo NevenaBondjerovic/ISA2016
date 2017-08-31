@@ -1,0 +1,40 @@
+<div class = "col-sm-8 col-sm-offset-2">
+    <h1><span>Drink card</span></h1>
+    <table class="table table-bordered">
+        <tr>
+        <th>Name</th>
+        <th>Description</th> 
+        <th>Price</th>
+        <th colspan = "2">Operation</th>
+
+        </tr>
+        <tr ng-repeat="drink in res.drinks | orderBy:'id'">
+        <td>{{drink.name}}</td>
+        <td>{{drink.description}}</td>
+        <td>{{drink.price}}</td>
+        <td><button ng-click = 'editDrink(drink)' class = "btn btn-primary" >Edit</button></td>
+        <td><button ng-click = "deleteDrink(drink)" class = "btn btn-primary" >Delete</button></td>
+        </tr>
+    </table>
+    <br/>
+</div>
+<br/><br/>
+<div class="col-sm-4 col-sm-offset-4 center">
+    <h1><span>Add drink:</span></h1>
+    <form name="drink1">
+
+        <label>Name: </label>
+        <input name="drink1.name" type="text" onkeydown="checkInputText()"  ng-model="drink.name" class="form-control" required/>
+
+        <label>Description: </label>
+        <input name="drink1.description" type="text" onkeydown="checkInputTextNumber()"  ng-model="drink.description" class="form-control" required/>
+
+        <label>Price: </label>
+        <input name="drink1.price" onkeydown="checkInputSize()"  type="text" ng-model="drink.price" class="form-control" required/>
+        <br>
+
+        <div class="button">
+            <button type="submit" class="btn btn-primary" ng-click="drink1.$valid && createDrink()"><span class="glyphicon glyphicon-ok"></span> OK</button>
+        </div>
+    </form>
+</div>

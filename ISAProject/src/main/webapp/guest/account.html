@@ -1,0 +1,86 @@
+<div>
+
+	<form name="copyOfUser">
+	
+		<div class = "col-sm-6">
+			<br>
+			<h3>Update data:</h3><br>
+	
+			<p>Name: </p>
+			<input name="copyOfUser.name" type="text" ng-model="$parent.copyOfUser.name" class="form-control" required/>
+	
+			<p>Surname: </p>
+			<input  name="copyOfUser.surname" type="text" ng-model="$parent.copyOfUser.surname" class="form-control" required/>
+	
+			<p>Email: </p>
+			<input name="copyOfUser.email" type="text" ng-model="$parent.copyOfUser.email" class="form-control" required disabled/>
+	
+			<p>Password: </p>
+			<input name="copyOfUser.password" type="password" ng-model="$parent.copyOfUser.password" class="form-control" required/>
+	
+			<p>Repeat password: </p>
+			<input name="copyOfUser.repeatedPassword" type="password" ng-model="$parent.repeatedPassword" class="form-control" required/>
+	
+			<br><br>
+	
+			<div class="button">
+				<button type="submit" class="btn btn-primary" ng-click="copyOfUser.$valid && changeProfile()">Update</button>
+			</div>
+		
+			<br><br><br>
+		</div>
+		<div class = "col-sm-10">
+	
+			<div class = "col-sm-6">
+				
+				<input type="text" list="friends" class="form-control" placeholder="search" ng-model="$parent.friend.email"/>
+				<datalist id="friends">
+				    <option ng-if="guest.email!=user.email" ng-repeat="guest in guests"
+				            value="{{guest.email}}">{{guest.name}} {{guest.surname}}</option>
+				</datalist>
+			</div>
+			
+			<div class = "col-sm-2">
+				<div class="button">
+					<button type="button" class="btn btn-primary" ng-click="addFriend()">Add Friend</button>
+				</div>	
+			</div>
+			<br><br><br><br>
+		</div>
+		
+		<div class = "col-sm-8" ng-show="requestsForFriends.length>0">
+			<h3>Sent requests:</h3><br>
+			<table class="table table-bordered">
+			  <tr>
+			    <th ng-click="$parent.sortType = 'name'; $parent.sortReverse = !$parent.sortReverse">Name
+			    	<span ng-show="$parent.sortType == 'name' && !$parent.sortReverse" 
+		            	class="glyphicon glyphicon-chevron-down"></span>
+		            <span ng-show="$parent.sortType == 'name' && $parent.sortReverse" 
+		            	class="glyphicon glyphicon-chevron-up"></span>
+			    </th>
+			    <th ng-click="$parent.sortType = 'surname'; $parent.sortReverse = !$parent.sortReverse">Surname
+			    	<span ng-show="$parent.sortType == 'surname' && !$parent.sortReverse" 
+		            	class="glyphicon glyphicon-chevron-down"></span>
+		            <span ng-show="$parent.sortType == 'surname' && $parent.sortReverse" 
+		            	class="glyphicon glyphicon-chevron-up"></span>
+			    </th> 
+			    <th ng-click="$parent.sortType = 'email'; $parent.sortReverse = !$parent.sortReverse">Email
+			    	<span ng-show="$parent.sortType == 'email' && !$parent.sortReverse" 
+		            	class="glyphicon glyphicon-chevron-down"></span>
+		            <span ng-show="$parent.sortType == 'email' && $parent.sortReverse" 
+		            	class="glyphicon glyphicon-chevron-up"></span>
+			    </th>
+			  </tr>
+			  <tr ng-repeat="friend in $parent.requestsForFriends | orderBy:sortType:sortReverse">
+			    <td>{{friend.name}}</td>
+			    <td>{{friend.surname}}</td>
+			    <td>{{friend.email}}</td>
+			  </tr>
+			</table>
+			
+			<br><br><br>
+		</div>
+	
+	</form>
+
+</div>

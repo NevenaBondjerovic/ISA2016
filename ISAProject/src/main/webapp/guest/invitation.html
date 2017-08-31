@@ -1,0 +1,37 @@
+ <div>
+	 <div ng-show="user.email!=undefined">
+	 
+	 	<div class="centered" ng-show="showInvitation==false">
+	 		<br><br>
+	 		<label>Password: </label>
+			<input name="password" type="password" ng-model="password" class="form-control" required/>
+			<br>
+			<button type="button" class="btn btn-primary" ng-click="checkPassword()">Next</button>
+			
+	 	</div>
+	 	
+	 	<div ng-show="showInvitation==true">
+		 	<h1>Invitation to restaurant:</h1>
+		 	
+		 	<div class="centered2">
+				<br><br>
+				<label>You have been invited to restaurant "{{reservation.restaurant.name}}"
+					from friend: {{reservation.guests[0].name}} {{reservation.guests[0].surname}}.<br>
+					Date and time: {{reservation.arrival}} {{reservation.arrivalTime}}.<br>
+					Duration: {{reservation.duration}} minutes.</label>
+				
+		 	</div>
+		 	
+		 	<div class="button">
+		 		<br>
+				<button type="button" class="btn btn-primary" ng-click="accept()">Accept</button>
+				<button type="button" class="btn btn-primary" ng-click="reject()">Reject</button>
+			</div>
+		</div>
+	</div>
+	<div ng-show="user.email==undefined">
+		<h1>No invitations.</h1>
+	<div>
+	
+	</div>
+</div>

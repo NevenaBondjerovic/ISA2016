@@ -1,0 +1,40 @@
+<div class = "col-sm-8 col-sm-offset-2">
+    <h1><span>Menu</span></h1>
+    <table class="table table-bordered">
+        <tr>
+        <th>Name</th>
+        <th>Description</th> 
+        <th>Price</th>
+        <th colspan = "2">Operation</th>
+
+        </tr>
+        <tr ng-repeat="food in res.menu | orderBy:'id'">
+        <td>{{food.name}}</td>
+        <td>{{food.description}}</td>
+        <td>{{food.price}}</td>
+        <td><button ng-click = 'editFood(food)' class = "btn btn-primary" >Edit</button></td>
+        <td><button ng-click = "deleteFood(food)" ng-disabled = "flagDelete" class = "btn btn-primary" >Delete</button></td>
+        </tr>  
+    </table>
+    <br/>
+</div>
+
+<div class="col-sm-4 col-sm-offset-4 center">
+    <h1><span>Add food:</span></h1>
+    <form name="food1">
+
+        <label>Name: </label>
+        <input name="food1.name" type="text" onkeydown="checkInputText()"  ng-model="food.name" class="form-control" required/>
+
+        <label>Description: </label>
+        <input name="food1.description" type="text" onkeydown="checkInputTextNumber()"  ng-model="food.description" class="form-control" required/>
+
+        <label>Price: </label>
+        <input name="food1.price" type="text" onkeydown="checkInputSize()"  ng-model="food.price" class="form-control" required/>
+        <br>
+
+        <div class="button">
+            <button type="submit" class="btn btn-primary" ng-disabled = "flag" ng-click="food1.$valid && createFood()"><span class="glyphicon glyphicon-ok"></span> OK</button>
+        </div>
+    </form>
+</div>

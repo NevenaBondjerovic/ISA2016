@@ -1,0 +1,38 @@
+<br/>
+<h1><span>Configuration tables:</span></h1>
+<div ng-if = "res.tables && res.tables.length > 0" class = "col-sm-8 col-sm-offset-2">
+    <span ng-repeat="item in res.tables">
+        <button ng-class=" {free: item.status == 'FREE', remove: item.status == 'REMOVE', reserved: item.status == 'RESERVED'}" type = "button" data-toggle="tooltip" data-placement="top" title={{item.position}} ng-click="clickTable(item)">{{item.number}}</button>
+    </span>
+    <br/>
+</div>
+<br/>
+<div class = "col-sm-8 col-sm-offset-2 center" ng-if = "tablesForDelete.length > 0">
+     <br/>
+     <label>Delete selected tables: </label>
+    <button class="btn btn-primary" ng-disabled = "flagDelete" ng-click="deleteTables()"><span class="glyphicon glyphicon-ok"></span> OK</button>
+</div>
+<br/>
+<div class = "col-sm-4 col-sm-offset-4">
+    <h1><span>Add tables:</span></h1>
+    <form name="tables1">
+        <label>Choose segment: </label>
+        <select name = "tables1.select" class="form-control" ng-model="tables.segment" required>
+        <option disabled hidden value=""></option>
+        <option value = "NOSMOKEGARDEN">NOSMOKE GARDEN</option>
+        <option value = "SMOKEGARDEN">SMOKE GARDEN</option>
+        <option value = "NOSMOKEINSIDE" ng-selected="selected">NOSMOKE INSIDE</option>
+        <option value = "SMOKEINSIDE"ng-selected="selected">SMOKE INSIDE</option>
+        </select>
+
+        <label>Number of tables: </label>
+        <input name="tables1.number" type="number" min = "1"  ng-model="tables.total" class="form-control" required/>
+        <br/>
+        <label>Number of seats per table: </label>
+        <input name="tables1.numberOfSeats" type="number" min = "1" max = "10" ng-model="tables.numberOfSeats" class="form-control" required/>
+        <br>
+        <div class="button">
+            <button class="btn btn-primary" ng-disabled = "flag" ng-click="tables1.$valid && addTables()"><span class="glyphicon glyphicon-ok"></span> OK</button>
+        </div>
+    </form>
+</div>

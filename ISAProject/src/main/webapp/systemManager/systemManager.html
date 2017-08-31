@@ -1,0 +1,19 @@
+<nav class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <ul class="nav navbar-nav">
+            
+            <li><button ng-click=list(); class="btn navbar-btn" ui-sref=".systemManagers" >System managers</button></li>
+            <li><button ng-click=list(); class="btn navbar-btn" ui-sref=".restaurants" >Restaurants</button></li>
+            <li><button ng-click=list(); class="btn navbar-btn" ui-sref=".restaurantManagers" >Restaurant managers</button></li>
+        </ul>
+        
+        <ul class="nav navbar-nav pull-right">
+            <li><a ui-sref=".userProfile" ><span class="glyphicon glyphicon-user"></span> {{user.email}}</a></li>
+            <li><a ui-sref="login"><span class="glyphicon glyphicon-log-out"></span> Sign Out</a></li>
+        </ul> 
+        
+    </div>
+</nav>
+<div>
+    <div ui-view></div>
+</div>
